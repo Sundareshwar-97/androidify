@@ -24,7 +24,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.google.services)
     alias(libs.plugins.crashlytics)
-    alias(libs.plugins.baselineprofile)
+    // alias(libs.plugins.baselineprofile)
     id("com.google.android.gms.oss-licenses-plugin")
 }
 
@@ -48,12 +48,6 @@ android {
 
     buildTypes {
         debug {}
-        create("benchmark") {
-            initWith(buildTypes.getByName("release"))
-            matchingFallbacks += listOf("release")
-            isDebuggable = false
-            baselineProfile.automaticGenerationDuringBuild = false
-        }
         release {
             isShrinkResources = true
             isMinifyEnabled = true
@@ -61,7 +55,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            baselineProfile.automaticGenerationDuringBuild = true
+           // baselineProfile.automaticGenerationDuringBuild = true
             configure<CrashlyticsExtension> {
                 mappingFileUploadEnabled = true
             }
@@ -84,9 +78,6 @@ android {
     }
 }
 
-baselineProfile() {
-    dexLayoutOptimization = true
-}
 
 dependencies {
     debugImplementation(libs.leakcanary.android)
@@ -124,7 +115,7 @@ dependencies {
 
     implementation(projects.core.theme)
 
-    baselineProfile(projects.benchmark)
+    // baselineProfile(projects.benchmark)
 
     // Android Instrumented Tests
     androidTestImplementation(platform(libs.androidx.compose.bom))
