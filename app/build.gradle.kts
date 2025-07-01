@@ -58,6 +58,7 @@ android {
            // baselineProfile.automaticGenerationDuringBuild = true
             configure<CrashlyticsExtension> {
                 mappingFileUploadEnabled = true
+                nativeSymbolUploadEnabled = true
             }
             // To publish on the Play store a private signing key is required, but to allow anyone
             // who clones the code to sign and run the release variant, use the debug signing key.
@@ -133,4 +134,8 @@ androidComponents {
     beforeVariants { variantBuilder ->
         variantBuilder.enableAndroidTest = false
     }
+}
+
+tasks.withType<com.google.android.gms.oss.licenses.plugin.LicensesTask>().configureEach {
+    notCompatibleWithConfigurationCache("Accesses project at execution time")
 }
