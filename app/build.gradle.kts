@@ -28,6 +28,13 @@ plugins {
     id("com.google.android.gms.oss-licenses-plugin")
 }
 
+plugins.withId("com.google.android.gms.oss-licenses-plugin") {
+    tasks.withType<com.google.android.gms.oss.licenses.plugin.LicensesTask>().configureEach {
+        notCompatibleWithConfigurationCache = true
+        because("OSS licenses plugin accesses project at execution time")
+    }
+}
+
 android {
     namespace = "com.android.developers.androidify"
     compileSdk = libs.versions.compileSdk.get().toInt()
