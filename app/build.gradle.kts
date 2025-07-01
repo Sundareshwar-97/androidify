@@ -64,7 +64,7 @@ android {
             )
            // baselineProfile.automaticGenerationDuringBuild = true
             configure<CrashlyticsExtension> {
-                mappingFileUploadEnabled = true
+                mappingFileUploadEnabled = false
                 nativeSymbolUploadEnabled = true
             }
             // To publish on the Play store a private signing key is required, but to allow anyone
