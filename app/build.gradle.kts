@@ -30,7 +30,7 @@ plugins {
 
 plugins.withId("com.google.android.gms.oss-licenses-plugin") {
     tasks.withType<com.google.android.gms.oss.licenses.plugin.LicensesTask>().configureEach {
-        notCompatibleWithConfigurationCache = true
+        notCompatibleWithConfigurationCache = false
         because("OSS licenses plugin accesses project at execution time")
     }
 }
