@@ -25,7 +25,7 @@ plugins {
     alias(libs.plugins.google.services)
     alias(libs.plugins.crashlytics)
     // alias(libs.plugins.baselineprofile)
-    id("com.google.android.gms.oss-licenses-plugin")
+    // id("com.google.android.gms.oss-licenses-plugin")
 }
 
 plugins.withId("com.google.android.gms.oss-licenses-plugin") {
@@ -144,5 +144,5 @@ androidComponents {
 }
 
 tasks.withType<com.google.android.gms.oss.licenses.plugin.LicensesTask>().configureEach {
-    notCompatibleWithConfigurationCache("Accesses project at execution time")
+    notCompatibleWithConfigurationCache.set(true)
 }
